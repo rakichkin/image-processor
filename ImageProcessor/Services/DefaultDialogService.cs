@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ImageProcessor.Services
+namespace imageProcessor.services
 {
 	public class DefaultDialogService : IDialogService
 	{

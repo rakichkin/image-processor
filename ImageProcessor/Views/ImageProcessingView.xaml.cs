@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ImageProcessor.Views
+namespace imageProcessor.views
 {
 	/// <summary>
 	/// Interaction logic for ImageProcessingView.xaml

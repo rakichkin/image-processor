@@ -8,9 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Drawing;
 
-using ImageProcessor.ViewModels;
+using imageProcessor.ViewModels;
 
-namespace ImageProcessor.Commands
+namespace imageProcessor.commands
 {
 	public class MakeNegativeEffectCommand : CommandBase
 	{

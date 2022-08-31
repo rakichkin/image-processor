@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ImageProcessor.Commands
+namespace imageProcessor.commands
 {
 	public abstract class CommandBase : ICommand
 	{

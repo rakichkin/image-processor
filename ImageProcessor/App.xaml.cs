@@ -6,9 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-using ImageProcessor.ViewModels;
+using imageProcessor.ViewModels;
 
-namespace ImageProcessor
+namespace imageProcessor
 {
 	/// <summary>
 	/// Interaction logic for App.xaml

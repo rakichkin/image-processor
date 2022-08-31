@@ -1,12 +1,12 @@
 ﻿using System.Drawing;
 
-using ImageProcessor.ViewModels;
-using ImageProcessor.Models;
+using imageProcessor.ViewModels;
+using imageProcessor.models;
 using System.IO;
 using System.Reflection;
 using System.Windows;
 
-namespace ImageProcessor.Commands
+namespace imageProcessor.commands
 {
 	public class SobolEdgeDetectionCommand : CommandBase
 	{

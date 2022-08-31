@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageProcessor.ViewModels
+namespace imageProcessor.ViewModels
 {
 	public class ViewModelBase : INotifyPropertyChanged
 	{

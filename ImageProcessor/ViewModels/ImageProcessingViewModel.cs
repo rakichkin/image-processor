@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-using ImageProcessor.Commands;
+using imageProcessor.commands;
 
-namespace ImageProcessor.ViewModels
+namespace imageProcessor.ViewModels
 {
 	public class ImageProcessingViewModel : ViewModelBase
 	{

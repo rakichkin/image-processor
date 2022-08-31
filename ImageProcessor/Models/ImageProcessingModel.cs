@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ImageProcessor.Models
+namespace imageProcessor.models
 {
 	public static class ImageProcessingModel
 	{
