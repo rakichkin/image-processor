@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using imageProcessor.services;
-using imageProcessor.ViewModels;
+using imageProcessor.viewModels;
 
 namespace imageProcessor.commands
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace imageProcessor.ViewModels
+namespace imageProcessor.viewModels
 {
 	public class MainViewModel : ViewModelBase
 	{

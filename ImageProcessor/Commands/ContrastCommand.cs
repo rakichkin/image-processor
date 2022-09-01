@@ -1,18 +1,25 @@
-﻿using System.Drawing;
-using System.IO;
-using System.Reflection;
-using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Drawing;
 
 using imageProcessor.viewModels;
 using imageProcessor.models;
+using System.IO;
+using System.Windows;
 
 namespace imageProcessor.commands
 {
-	public class SobolEdgeDetectionCommand : CommandBase
+	public class ContrastCommand : CommandBase
 	{
 		private readonly ImageProcessingViewModel _imageProcessingViewModel;
 
-		public SobolEdgeDetectionCommand(ImageProcessingViewModel imageProcessingViewModel)
+		public ContrastCommand(ImageProcessingViewModel imageProcessingViewModel)
 		{
 			_imageProcessingViewModel = imageProcessingViewModel;
 		}
@@ -21,13 +28,12 @@ namespace imageProcessor.commands
 		{
 			if(string.IsNullOrEmpty(_imageProcessingViewModel.ImageSrc)) return;
 
-
 			using(var bmp = new Bitmap(_imageProcessingViewModel.ImageSrc))
 			{
 				if(bmp != null)
 				{
 					var imageProcessingModel = new ImageProcessingModel();
-					using(var processedBitmap = imageProcessingModel.SobolEdgeDetector(bmp))
+					using(var processedBitmap = imageProcessingModel.AdjustContrast(bmp, _imageProcessingViewModel.SliderValue))
 					{
 						string processedImageSrc = Directory.GetCurrentDirectory() + "\\processedImage.png";
 
@@ -46,8 +52,6 @@ namespace imageProcessor.commands
 					}
 				}
 			}
-
-			
 		}
 	}
 }

@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 using imageProcessor.commands;
 
-namespace imageProcessor.ViewModels
+namespace imageProcessor.viewModels
 {
 	public class ImageProcessingViewModel : ViewModelBase
 	{
@@ -25,17 +25,31 @@ namespace imageProcessor.ViewModels
 			}
 		}
 
+		private int _sliderValue;
+		public int SliderValue
+		{
+			get
+			{
+				return _sliderValue;
+			}
+			set
+			{
+				_sliderValue = value;
+				OnPropertyChanged(nameof(SliderValue));
+			}
+		}
+
 		public ICommand OpenFileCommand { get; }
 		public ICommand SaveFileCommand { get; }
 		public ICommand SobolEdgeDetectionCommand { get; }
-		public ICommand MakeNegativeEffectCommand { get; }
+		public ICommand ContrastCommand { get; }
 
 		public ImageProcessingViewModel()
 		{
 			OpenFileCommand = new OpenFileCommand(this);
 			SaveFileCommand = new SaveFileCommand();
 			SobolEdgeDetectionCommand = new SobolEdgeDetectionCommand(this);
-			MakeNegativeEffectCommand = new MakeNegativeEffectCommand(this);
+			ContrastCommand = new ContrastCommand(this);
 		}
 	}
 }

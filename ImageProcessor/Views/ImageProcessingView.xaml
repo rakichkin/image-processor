@@ -33,18 +33,20 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="Контрастирование" />
-                <Slider Grid.Row="1"></Slider>
+                <Slider Grid.Row="1"
+                        Value="{Binding SliderValue}"
+                        Minimum="-500"
+                        Maximum="500" />
                 <Button Content="Применить"
                         Padding="7"
-                        Command="{Binding MakeNegativeEffectCommand}"
-                        Grid.Row="2"/>
+                        Command="{Binding ContrastCommand}"
+                        Grid.Row="2" />
                 
             </Grid>
-           
+
             <Button Content="Фильр Собеля"
                     Padding="7"
                     Command="{Binding SobolEdgeDetectionCommand}"/>
-            
         </StackPanel>
     </Grid>
 </UserControl>

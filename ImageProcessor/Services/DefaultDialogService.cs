@@ -48,7 +48,6 @@ namespace imageProcessor.services
 				{
 					ShowMessage("Error");
 				}
-
 				return true;
 			}
 			return false;
