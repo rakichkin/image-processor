@@ -26,12 +26,14 @@ namespace imageProcessor.ViewModels
 		}
 
 		public ICommand OpenFileCommand { get; }
+		public ICommand SaveFileCommand { get; }
 		public ICommand SobolEdgeDetectionCommand { get; }
 		public ICommand MakeNegativeEffectCommand { get; }
 
 		public ImageProcessingViewModel()
 		{
 			OpenFileCommand = new OpenFileCommand(this);
+			SaveFileCommand = new SaveFileCommand();
 			SobolEdgeDetectionCommand = new SobolEdgeDetectionCommand(this);
 			MakeNegativeEffectCommand = new MakeNegativeEffectCommand(this);
 		}

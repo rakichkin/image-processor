@@ -12,5 +12,6 @@ namespace imageProcessor.services
 
 		void ShowMessage(string message);
 		bool OpenFileDialog();
+		bool SaveFileDialog();
 	}
 }

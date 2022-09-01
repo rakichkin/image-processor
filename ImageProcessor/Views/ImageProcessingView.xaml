@@ -10,10 +10,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        
         <Image Grid.Row="0"
-               Source="{Binding ImageSrc}"
-               />
+               Source="{Binding ImageSrc}" />
+        
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Content="Выбрать изображение"
                     Command="{Binding OpenFileCommand}"
@@ -21,12 +23,28 @@
             <Button Content="Сохранить изображение"
                     Command="{Binding SaveFileCommand}"
                     Padding="7" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Контрастирование" />
+                <Slider Grid.Row="1"></Slider>
+                <Button Content="Применить"
+                        Padding="7"
+                        Command="{Binding MakeNegativeEffectCommand}"
+                        Grid.Row="2"/>
+                
+            </Grid>
+           
             <Button Content="Фильр Собеля"
                     Padding="7"
                     Command="{Binding SobolEdgeDetectionCommand}"/>
-            <Button Content="Контрастность" 
-                    Padding="7"
-                    Command="{Binding MakeNegativeEffectCommand}"/>
+            
         </StackPanel>
     </Grid>
 </UserControl>
