@@ -1,18 +1,21 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using Microsoft.Win32;
+
+using imageProcessor.viewModels;
 
 namespace imageProcessor.services
 {
-	public class DefaultDialogService : IDialogService
+	public class DefaultDialogService
 	{
-		public string FilePath { get; set; }
+		private readonly ImageProcessingViewModel _imageProcessingViewModel;
+
+		public DefaultDialogService(ImageProcessingViewModel imageProcessingViewModel)
+		{
+			_imageProcessingViewModel = imageProcessingViewModel;
+		}
 
 		public bool OpenFileDialog()
 		{
@@ -20,7 +23,7 @@ namespace imageProcessor.services
 			openFileDialog.Filter = "png files (*.png)|*.png|jpeg files (*.jpeg)|*.jpeg|jpg files (*.jpg)|*.jpg";
 			if(openFileDialog.ShowDialog() == true)
 			{
-				FilePath = openFileDialog.FileName;
+				_imageProcessingViewModel.ImageSrc = new BitmapImage(new Uri(openFileDialog.FileName));
 				return true;
 			}
 			return false;
@@ -38,24 +41,29 @@ namespace imageProcessor.services
 				var encoder = new PngBitmapEncoder();
 				try
 				{
-					encoder.Frames.Add(BitmapFrame.Create(new Uri("processedImage.png", UriKind.Relative)));
+					encoder.Frames.Add(BitmapFrame.Create(_imageProcessingViewModel.ImageSrc));
 					using(FileStream stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
 					{
 						encoder.Save(stream);
 					}
 				}
-				catch(System.IO.FileNotFoundException ex)
+				catch(IOException IOEx)
 				{
-					ShowMessage("Error");
+					MessageBox.Show("Обработайте изображение, прежде чем сохранять его.",
+								"Ошибка",
+								MessageBoxButton.OK,
+								MessageBoxImage.Error);
+				}
+				catch(Exception ex)
+				{
+					MessageBox.Show("Что-то пошло не так. Ошибка:" + ex.Message,
+								"Ошибка",
+								MessageBoxButton.OK,
+								MessageBoxImage.Error);
 				}
 				return true;
 			}
 			return false;
-		}
-
-		public void ShowMessage(string message)
-		{
-			MessageBox.Show(message);
 		}
 	}
 }

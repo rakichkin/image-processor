@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using System.Windows.Media.Imaging;
 using imageProcessor.commands;
 
 namespace imageProcessor.viewModels
 {
 	public class ImageProcessingViewModel : ViewModelBase
 	{
-		private string _imageSrc;
-		public string ImageSrc
+		private BitmapImage _imageSrc;
+		public BitmapImage ImageSrc
 		{
 			get
 			{
@@ -47,7 +47,7 @@ namespace imageProcessor.viewModels
 		public ImageProcessingViewModel()
 		{
 			OpenFileCommand = new OpenFileCommand(this);
-			SaveFileCommand = new SaveFileCommand();
+			SaveFileCommand = new SaveFileCommand(this);
 			SobolEdgeDetectionCommand = new SobolEdgeDetectionCommand(this);
 			ContrastCommand = new ContrastCommand(this);
 		}

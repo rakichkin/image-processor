@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Drawing;
+﻿using System.Drawing;
+using System.Windows;
 
 using imageProcessor.viewModels;
 using imageProcessor.models;
-using System.IO;
-using System.Windows;
+using imageProcessor.services;
 
 namespace imageProcessor.commands
 {
@@ -26,29 +18,23 @@ namespace imageProcessor.commands
 
 		public override void Execute(object? parameter)
 		{
-			if(string.IsNullOrEmpty(_imageProcessingViewModel.ImageSrc)) return;
+			if(_imageProcessingViewModel.ImageSrc == null) return;
 
-			using(var bmp = new Bitmap(_imageProcessingViewModel.ImageSrc))
+			using(var bmp = new Bitmap(BitmapConverter.BitmapImage2Bitmap(_imageProcessingViewModel.ImageSrc)))
 			{
-				if(bmp != null)
+				var imageProcessingModel = new ImageProcessingModel();
+				using(var processedBitmap = imageProcessingModel.AdjustContrast(bmp, _imageProcessingViewModel.SliderValue))
 				{
-					var imageProcessingModel = new ImageProcessingModel();
-					using(var processedBitmap = imageProcessingModel.AdjustContrast(bmp, _imageProcessingViewModel.SliderValue))
+					try
 					{
-						string processedImageSrc = Directory.GetCurrentDirectory() + "\\processedImage.png";
-
-						try
-						{
-							processedBitmap.Save(processedImageSrc);
-							_imageProcessingViewModel.ImageSrc = processedImageSrc;
-						}
-						catch(System.Runtime.InteropServices.ExternalException ex)
-						{
-							MessageBox.Show("Исправь!!!!!",
-								"Сообщение",
-								MessageBoxButton.OK,
-								MessageBoxImage.Information);
-						}
+						_imageProcessingViewModel.ImageSrc = BitmapConverter.Bitmap2BitmapImage(processedBitmap);
+					}
+					catch(System.Runtime.InteropServices.ExternalException ex)
+					{
+						MessageBox.Show("Исправь!!!!!",
+							"Сообщение",
+							MessageBoxButton.OK,
+							MessageBoxImage.Information);
 					}
 				}
 			}

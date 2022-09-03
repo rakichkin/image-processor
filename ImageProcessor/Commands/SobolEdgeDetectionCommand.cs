@@ -1,10 +1,11 @@
-﻿using System.Drawing;
-using System.IO;
-using System.Reflection;
+﻿using System;
+using System.Drawing;
 using System.Windows;
 
 using imageProcessor.viewModels;
 using imageProcessor.models;
+using imageProcessor.services;
+
 
 namespace imageProcessor.commands
 {
@@ -19,35 +20,27 @@ namespace imageProcessor.commands
 
 		public override void Execute(object? parameter)
 		{
-			if(string.IsNullOrEmpty(_imageProcessingViewModel.ImageSrc)) return;
+			if(_imageProcessingViewModel.ImageSrc == null) return;
 
-
-			using(var bmp = new Bitmap(_imageProcessingViewModel.ImageSrc))
+			using(var bmp = new Bitmap(BitmapConverter.BitmapImage2Bitmap(_imageProcessingViewModel.ImageSrc)))
 			{
-				if(bmp != null)
+				var imageProcessingModel = new ImageProcessingModel();
+				using(var processedBitmap = imageProcessingModel.SobolEdgeDetector(bmp))
 				{
-					var imageProcessingModel = new ImageProcessingModel();
-					using(var processedBitmap = imageProcessingModel.SobolEdgeDetector(bmp))
+					try
 					{
-						string processedImageSrc = Directory.GetCurrentDirectory() + "\\processedImage.png";
-
-						try
-						{
-							processedBitmap.Save(processedImageSrc);
-							_imageProcessingViewModel.ImageSrc = processedImageSrc;
-						}
-						catch(System.Runtime.InteropServices.ExternalException ex)
-						{
-							MessageBox.Show("Исправь!!!!!",
-								"Сообщение",
-								MessageBoxButton.OK,
-								MessageBoxImage.Information);
-						}
+						_imageProcessingViewModel.ImageSrc = BitmapConverter.Bitmap2BitmapImage(processedBitmap);
+					}
+					catch(Exception ex)
+					{
+						MessageBox.Show("Что-то пошло не так. Ошибка:" + ex.Message,
+							"Ошибка",
+							MessageBoxButton.OK,
+							MessageBoxImage.Error);
 					}
 				}
-			}
 
-			
+			}
 		}
 	}
 }

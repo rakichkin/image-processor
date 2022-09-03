@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using imageProcessor.services;
+﻿using imageProcessor.services;
 using imageProcessor.viewModels;
 
 namespace imageProcessor.commands
@@ -19,11 +14,9 @@ namespace imageProcessor.commands
 
 		public override void Execute(object? parameter)
 		{
-			DefaultDialogService defaultDialogService = new DefaultDialogService();
-			if(defaultDialogService.OpenFileDialog())
-			{
-				_imageProcessingViewModel.ImageSrc = defaultDialogService.FilePath;
-			}
+			DefaultDialogService defaultDialogService = new DefaultDialogService(_imageProcessingViewModel);
+
+			defaultDialogService.OpenFileDialog();
 		}
 	}
 }
