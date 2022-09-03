@@ -9,59 +9,69 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
-        <Image Grid.Row="0"
-               Source="{Binding ImageSrc}" />
 
-        <DockPanel Grid.Row="1">
-            <StackPanel Orientation="Vertical"
+        <Image Grid.Row="0"
+               Source="{Binding ImageSrc}"
+               Margin="10"/>
+        <Border Background="GhostWhite"
+                    BorderBrush="Gainsboro"
+                    BorderThickness="3"
+                    Grid.Row="1">
+            <DockPanel>
+                <StackPanel Orientation="Vertical"
                         VerticalAlignment="Center"
                         DockPanel.Dock="Right"
                         Margin="0 0 10 0">
-                <Button Content="Выбрать изображение"
+                    <Button Content="Выбрать изображение"
                         Command="{Binding OpenFileCommand}"
                         Padding="7" 
                         FontSize="15"
                         Margin="0 0 0 10"/>
-                <Button Content="Сохранить изображение"
+                    <Button Content="Сохранить изображение"
                         Command="{Binding SaveFileCommand}"
                         Padding="7"
                         FontSize="15" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
                         DockPanel.Dock="Left"
                         Margin="10 0 0 7">
-                <Grid Margin="0 0 15 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0"
+                    <Grid Margin="0 0 15 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0"
                                Text="Контраст"
                                FontSize="18"
                                TextAlignment="Center"
                                Margin="0 0 0 10" />
-                    <Slider Grid.Row="1"
-                            Value="{Binding SliderValue}"
-                            Minimum="-500"
-                            Maximum="500"
-                            Width="120"
-                            Margin="0 0 0 10" />
-                    <Button Content="Применить"
+                        <Slider Grid.Row="1"
+                                Value="{Binding SliderValue}"
+                                Minimum="-100"
+                                Maximum="150"
+                                Width="120"
+                                Margin="0 0 0 10"
+                                TickFrequency="20"
+                                TickPlacement="BottomRight"
+                                IsSnapToTickEnabled="True"/>
+                        <Button Content="Применить"
                             Padding="7"
                             Command="{Binding ContrastCommand}"
                             Grid.Row="2"
                             FontSize="15"/>
-                </Grid>
-                <Button Content="Фильр Собеля"
+                    </Grid>
+                    <Button Content="Фильр Собеля"
                         Command="{Binding SobolEdgeDetectionCommand}" 
                         Height="40"
                         Width="140"
                         FontSize="15"/>
-            </StackPanel>
-        </DockPanel>
+                </StackPanel>
+
+            </DockPanel>
+        </Border>
     </Grid>
 </UserControl>

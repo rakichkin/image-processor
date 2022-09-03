@@ -16,7 +16,10 @@ namespace imageProcessor.commands
 		{
 			DefaultDialogService defaultDialogService = new DefaultDialogService(_imageProcessingViewModel);
 
-			defaultDialogService.OpenFileDialog();
+			if(defaultDialogService.OpenFileDialog() == true)
+			{
+				_imageProcessingViewModel.IsImageLoaded = true;
+			}
 		}
 	}
 }
