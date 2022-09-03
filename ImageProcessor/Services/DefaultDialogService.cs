@@ -20,7 +20,7 @@ namespace imageProcessor.services
 		public bool OpenFileDialog()
 		{
 			var openFileDialog = new OpenFileDialog();
-			openFileDialog.Filter = "png files (*.png)|*.png|jpeg files (*.jpeg)|*.jpeg|jpg files (*.jpg)|*.jpg";
+			openFileDialog.Filter = "Image files(*.BMP;*.JPG;*.JPEG;*.PNG)|*.BMP;*.JPG;*.JPEG;*.PNG";
 			if(openFileDialog.ShowDialog() == true)
 			{
 				_imageProcessingViewModel.ImageSrc = new BitmapImage(new Uri(openFileDialog.FileName));
@@ -32,9 +32,9 @@ namespace imageProcessor.services
 		public bool SaveFileDialog()
 		{
 			var saveFileDialog = new SaveFileDialog();
-			saveFileDialog.FileName = "processedImage";
+			saveFileDialog.FileName = "Processed image";
 			saveFileDialog.DefaultExt = ".png";
-			saveFileDialog.Filter = "png files (*.png)|*.png|jpeg files (*.jpeg)|*.jpeg|jpg files (*.jpg)|*.jpg";
+			saveFileDialog.Filter = "Png files (*.png)|*.png|Jpeg files (*.jpeg)|*.jpeg|Jpg files (*.jpg)|*.jpg|Bmp files(*.bmp)|*.bmp";
 
 			if(saveFileDialog.ShowDialog() == true)
 			{

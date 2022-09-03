@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows;
+using System.ComponentModel;
 
 using imageProcessor.viewModels;
 using imageProcessor.models;
@@ -16,6 +17,16 @@ namespace imageProcessor.commands
 		public SobolEdgeDetectionCommand(ImageProcessingViewModel imageProcessingViewModel)
 		{
 			_imageProcessingViewModel = imageProcessingViewModel;
+
+			_imageProcessingViewModel.PropertyChanged += OnViewModelPropertyChanged;
+		}
+
+		private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
+		{
+			if(e.PropertyName == nameof(_imageProcessingViewModel.IsImageLoaded))
+			{
+				OnCanExecuteChanged();
+			}
 		}
 
 		public override void Execute(object? parameter)
@@ -41,6 +52,11 @@ namespace imageProcessor.commands
 				}
 
 			}
+		}
+
+		public override bool CanExecute(object? parameter)
+		{
+			return _imageProcessingViewModel.IsImageLoaded && base.CanExecute(parameter);
 		}
 	}
 }

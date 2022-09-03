@@ -39,6 +39,20 @@ namespace imageProcessor.viewModels
 			}
 		}
 
+		private bool _isImageLoaded = false;
+		public bool IsImageLoaded 
+		{ 
+			get
+			{
+				return _isImageLoaded;
+			}
+			set
+			{
+				_isImageLoaded = value;
+				OnPropertyChanged(nameof(IsImageLoaded));
+			}
+		}
+
 		public ICommand OpenFileCommand { get; }
 		public ICommand SaveFileCommand { get; }
 		public ICommand SobolEdgeDetectionCommand { get; }
@@ -50,6 +64,8 @@ namespace imageProcessor.viewModels
 			SaveFileCommand = new SaveFileCommand(this);
 			SobolEdgeDetectionCommand = new SobolEdgeDetectionCommand(this);
 			ContrastCommand = new ContrastCommand(this);
+
+			IsImageLoaded = false;
 		}
 	}
 }
