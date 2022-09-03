@@ -6,47 +6,62 @@
              xmlns:local="clr-namespace:imageProcessor.views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
         <Image Grid.Row="0"
                Source="{Binding ImageSrc}" />
-        
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Content="Выбрать изображение"
-                    Command="{Binding OpenFileCommand}"
-                    Padding="7" />
-            <Button Content="Сохранить изображение"
-                    Command="{Binding SaveFileCommand}"
-                    Padding="7" />
-        </StackPanel>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Контрастирование" />
-                <Slider Grid.Row="1"
-                        Value="{Binding SliderValue}"
-                        Minimum="-500"
-                        Maximum="500" />
-                <Button Content="Применить"
+        <DockPanel Grid.Row="1">
+            <StackPanel Orientation="Vertical"
+                        VerticalAlignment="Center"
+                        DockPanel.Dock="Right"
+                        Margin="0 0 10 0">
+                <Button Content="Выбрать изображение"
+                        Command="{Binding OpenFileCommand}"
+                        Padding="7" 
+                        FontSize="15"
+                        Margin="0 0 0 10"/>
+                <Button Content="Сохранить изображение"
+                        Command="{Binding SaveFileCommand}"
                         Padding="7"
-                        Command="{Binding ContrastCommand}"
-                        Grid.Row="2" />
-                
-            </Grid>
-
-            <Button Content="Фильр Собеля"
-                    Padding="7"
-                    Command="{Binding SobolEdgeDetectionCommand}"/>
-        </StackPanel>
+                        FontSize="15" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        DockPanel.Dock="Left"
+                        Margin="10 0 0 7">
+                <Grid Margin="0 0 15 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Text="Контраст"
+                               FontSize="18"
+                               TextAlignment="Center"
+                               Margin="0 0 0 10" />
+                    <Slider Grid.Row="1"
+                            Value="{Binding SliderValue}"
+                            Minimum="-500"
+                            Maximum="500"
+                            Width="120"
+                            Margin="0 0 0 10" />
+                    <Button Content="Применить"
+                            Padding="7"
+                            Command="{Binding ContrastCommand}"
+                            Grid.Row="2"
+                            FontSize="15"/>
+                </Grid>
+                <Button Content="Фильр Собеля"
+                        Command="{Binding SobolEdgeDetectionCommand}" 
+                        Height="40"
+                        Width="140"
+                        FontSize="15"/>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </UserControl>
