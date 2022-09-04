@@ -21,6 +21,7 @@ namespace imageProcessor.services
 		{
 			var openFileDialog = new OpenFileDialog();
 			openFileDialog.Filter = "Image files(*.BMP;*.JPG;*.JPEG;*.PNG)|*.BMP;*.JPG;*.JPEG;*.PNG";
+
 			if(openFileDialog.ShowDialog() == true)
 			{
 				_imageProcessingViewModel.ImageSrc = new BitmapImage(new Uri(openFileDialog.FileName));
@@ -50,16 +51,16 @@ namespace imageProcessor.services
 				catch(IOException IOEx)
 				{
 					MessageBox.Show("Обработайте изображение, прежде чем сохранять его.",
-								"Ошибка",
-								MessageBoxButton.OK,
-								MessageBoxImage.Error);
+									"Ошибка",
+									MessageBoxButton.OK,
+									MessageBoxImage.Error);
 				}
 				catch(Exception ex)
 				{
 					MessageBox.Show("Что-то пошло не так. Ошибка:" + ex.Message,
-								"Ошибка",
-								MessageBoxButton.OK,
-								MessageBoxImage.Error);
+									"Ошибка",
+									MessageBoxButton.OK,
+									MessageBoxImage.Error);
 				}
 				return true;
 			}

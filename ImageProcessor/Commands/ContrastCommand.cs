@@ -1,10 +1,12 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows;
+using System.ComponentModel;
 
 using imageProcessor.viewModels;
 using imageProcessor.models;
 using imageProcessor.services;
-using System.ComponentModel;
+
 
 namespace imageProcessor.commands
 {
@@ -40,12 +42,12 @@ namespace imageProcessor.commands
 					{
 						_imageProcessingViewModel.ImageSrc = BitmapConverter.Bitmap2BitmapImage(processedBitmap);
 					}
-					catch(System.Runtime.InteropServices.ExternalException ex)
+					catch(Exception ex)
 					{
-						MessageBox.Show("Исправь!!!!!",
-							"Сообщение",
-							MessageBoxButton.OK,
-							MessageBoxImage.Information);
+						MessageBox.Show("Что-то пошло не так. Ошибка:" + ex.Message,
+										"Ошибка",
+										MessageBoxButton.OK,
+										MessageBoxImage.Error);
 					}
 				}
 			}

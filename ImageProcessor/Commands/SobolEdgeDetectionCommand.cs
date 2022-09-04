@@ -45,9 +45,9 @@ namespace imageProcessor.commands
 					catch(Exception ex)
 					{
 						MessageBox.Show("Что-то пошло не так. Ошибка:" + ex.Message,
-							"Ошибка",
-							MessageBoxButton.OK,
-							MessageBoxImage.Error);
+										"Ошибка",
+										MessageBoxButton.OK,
+										MessageBoxImage.Error);
 					}
 				}
 
