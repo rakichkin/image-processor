@@ -3,13 +3,14 @@ using System.Drawing;
 using System.Windows;
 using System.ComponentModel;
 
-using imageProcessor.viewModels;
-using imageProcessor.models;
-using imageProcessor.services;
+using ImageProcessor.ViewModels;
+using ImageProcessor.Models;
+using ImageProcessor.Services;
 
 
-namespace imageProcessor.commands
+namespace ImageProcessor.Commands
 {
+	/// <summary>Класс, реализующий команду для выполнения контрастирования</summary>
 	public class ContrastCommand : CommandBase
 	{
 		private readonly ImageProcessingViewModel _imageProcessingViewModel;

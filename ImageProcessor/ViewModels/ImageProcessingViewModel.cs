@@ -1,10 +1,10 @@
 ﻿using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-using imageProcessor.commands;
+using ImageProcessor.Commands;
 
 
-namespace imageProcessor.viewModels
+namespace ImageProcessor.ViewModels
 {
 	public class ImageProcessingViewModel : ViewModelBase
 	{

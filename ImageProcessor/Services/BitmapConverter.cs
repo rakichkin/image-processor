@@ -4,10 +4,12 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Media.Imaging;
 
-namespace imageProcessor.services
+namespace ImageProcessor.Services
 {
+	/// <summary>Вспомогательный класс для конвертации типов Bitmap и BitmapImage</summary>
 	public static class BitmapConverter
 	{
+		/// <summary>Конвертирует тип BitmapImage в тип Bitmap</summary>
 		public static Bitmap BitmapImage2Bitmap(BitmapImage bitmapImage)
 		{
 			// BitmapImage bitmapImage = new BitmapImage(new Uri("../Images/test.png", UriKind.Relative));
@@ -26,6 +28,7 @@ namespace imageProcessor.services
 		[System.Runtime.InteropServices.DllImport("gdi32.dll")]
 		private static extern bool DeleteObject(IntPtr hObject);
 
+		/// <summary>Конвертирует тип Bitmap в тип BitmapImage</summary>
 		public static BitmapImage Bitmap2BitmapImage(Bitmap bitmap)
 		{
 			using(var memory = new MemoryStream())

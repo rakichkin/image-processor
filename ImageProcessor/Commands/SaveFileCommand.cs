@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel;
 
-using imageProcessor.services;
-using imageProcessor.viewModels;
+using ImageProcessor.Services;
+using ImageProcessor.ViewModels;
 
 
-namespace imageProcessor.commands
+namespace ImageProcessor.Commands
 {
+	/// <summary>Класс, реализующий команду для сохранения изображения</summary>
 	public class SaveFileCommand : CommandBase
 	{
 		private readonly ImageProcessingViewModel _imageProcessingViewModel;

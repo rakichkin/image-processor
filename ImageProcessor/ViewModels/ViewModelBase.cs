@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel;
 
 
-namespace imageProcessor.viewModels
+namespace ImageProcessor.ViewModels
 {
+	/// <summary>Основа для построения ViewModel</summary>
 	public class ViewModelBase : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler? PropertyChanged;

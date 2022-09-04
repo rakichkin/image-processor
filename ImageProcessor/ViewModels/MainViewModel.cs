@@ -1,4 +1,4 @@
-﻿namespace imageProcessor.viewModels
+﻿namespace ImageProcessor.ViewModels
 {
 	public class MainViewModel : ViewModelBase
 	{

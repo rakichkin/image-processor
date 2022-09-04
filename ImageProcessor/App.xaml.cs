@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 
-using imageProcessor.viewModels;
+using ImageProcessor.ViewModels;
 
-namespace imageProcessor
+namespace ImageProcessor
 {
 	/// <summary>
 	/// Interaction logic for App.xaml

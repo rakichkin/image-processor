@@ -3,10 +3,13 @@ using System.Drawing;
 using System.Drawing.Imaging;
 
 
-namespace imageProcessor.models
+namespace ImageProcessor.Models
 {
 	public class ImageProcessingModel
 	{
+		/// <summary>Применяет фильтр Собеля к изображению</summary>
+		/// <param name="image">Исходное изображение</param>
+		/// <returns>Обработанное изображение</returns>
 		public Bitmap SobolEdgeDetector(Bitmap image)
 		{
 			using(var bitmap = (Bitmap)image.Clone())
@@ -57,6 +60,9 @@ namespace imageProcessor.models
 			}
 		}
 
+		/// <summary>Изменяет контраст изображения</summary>
+		/// <param name="image">Исходное изображение</param>
+		/// <returns>Обработанное изображение</returns>
 		public Bitmap AdjustContrast(Bitmap Image, float Value)
 		{
 			Value = (100.0f + Value) / 100.0f;

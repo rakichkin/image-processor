@@ -4,10 +4,11 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 
-using imageProcessor.viewModels;
+using ImageProcessor.ViewModels;
 
-namespace imageProcessor.services
+namespace ImageProcessor.Services
 {
+	/// <summary>Класс, инкапсулирующий работу с диалоговыми окнами открытия и сохранения файлов</summary>
 	public class DefaultDialogService
 	{
 		private readonly ImageProcessingViewModel _imageProcessingViewModel;
@@ -17,6 +18,8 @@ namespace imageProcessor.services
 			_imageProcessingViewModel = imageProcessingViewModel;
 		}
 
+		/// <summary>Открытие файла</summary>
+		/// <returns>True, если файл успешно открылся; false в противном случае</returns>
 		public bool OpenFileDialog()
 		{
 			var openFileDialog = new OpenFileDialog();
@@ -30,6 +33,8 @@ namespace imageProcessor.services
 			return false;
 		}
 
+		/// <summary>Сохранение файла</summary>
+		/// <returns>True, если файл успешно сохранился; false в противном случае</returns>
 		public bool SaveFileDialog()
 		{
 			var saveFileDialog = new SaveFileDialog();

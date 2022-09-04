@@ -1,8 +1,9 @@
-﻿using imageProcessor.services;
-using imageProcessor.viewModels;
+﻿using ImageProcessor.Services;
+using ImageProcessor.ViewModels;
 
-namespace imageProcessor.commands
+namespace ImageProcessor.Commands
 {
+	/// <summary>Класс, реализующий команду для загрузки изображения</summary>
 	public class OpenFileCommand : CommandBase
 	{
 		private readonly ImageProcessingViewModel _imageProcessingViewModel;

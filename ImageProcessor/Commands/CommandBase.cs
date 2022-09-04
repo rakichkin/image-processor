@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace imageProcessor.commands
+namespace ImageProcessor.Commands
 {
+	/// <summary>Основа для построения команд</summary>
 	public abstract class CommandBase : ICommand
 	{
 		public event EventHandler? CanExecuteChanged;

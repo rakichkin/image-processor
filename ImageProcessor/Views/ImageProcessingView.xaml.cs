@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 
 
-namespace imageProcessor.views
+namespace ImageProcessor.Views
 {
 	/// <summary>
 	/// Interaction logic for ImageProcessingView.xaml
