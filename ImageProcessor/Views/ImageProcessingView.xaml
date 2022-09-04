@@ -9,13 +9,20 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 629f348dfeaba576420ff7e2b68c9c6817c28527
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Image Grid.Row="0"
                Source="{Binding ImageSrc}"
                Margin="10"/>
+<<<<<<< HEAD
         
+=======
+>>>>>>> 629f348dfeaba576420ff7e2b68c9c6817c28527
         <Border Background="GhostWhite"
                     BorderBrush="Gainsboro"
                     BorderThickness="3"
@@ -35,7 +42,10 @@
                         Padding="7"
                         FontSize="15" />
                 </StackPanel>
+<<<<<<< HEAD
                 
+=======
+>>>>>>> 629f348dfeaba576420ff7e2b68c9c6817c28527
                 <StackPanel Orientation="Horizontal"
                         DockPanel.Dock="Left"
                         Margin="10 0 0 7">
@@ -45,7 +55,10 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
+<<<<<<< HEAD
                         
+=======
+>>>>>>> 629f348dfeaba576420ff7e2b68c9c6817c28527
                         <TextBlock Grid.Row="0"
                                Text="Контраст"
                                FontSize="18"
@@ -66,13 +79,20 @@
                             Grid.Row="2"
                             FontSize="15"/>
                     </Grid>
+<<<<<<< HEAD
                     
+=======
+>>>>>>> 629f348dfeaba576420ff7e2b68c9c6817c28527
                     <Button Content="Фильр Собеля"
                         Command="{Binding SobolEdgeDetectionCommand}" 
                         Height="40"
                         Width="140"
                         FontSize="15"/>
                 </StackPanel>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 629f348dfeaba576420ff7e2b68c9c6817c28527
             </DockPanel>
         </Border>
     </Grid>
