@@ -62,10 +62,7 @@ namespace ImageProcessor.Services
 				}
 				catch(Exception ex)
 				{
-					MessageBox.Show("Что-то пошло не так. Ошибка:" + ex.Message,
-									"Ошибка",
-									MessageBoxButton.OK,
-									MessageBoxImage.Error);
+					ErrorMessage.ShowDefaultMessage(ex);
 				}
 				return true;
 			}

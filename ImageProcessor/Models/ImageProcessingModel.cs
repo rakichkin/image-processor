@@ -61,45 +61,45 @@ namespace ImageProcessor.Models
 		}
 
 		/// <summary>Изменяет контраст изображения</summary>
-		/// <param name="image">Исходное изображение</param>
+		/// <param name="bitmap">Исходное изображение</param>
 		/// <returns>Обработанное изображение</returns>
-		public Bitmap AdjustContrast(Bitmap Image, float Value)
+		public Bitmap AdjustContrast(Bitmap bitmap, float value)
 		{
-			Value = (100.0f + Value) / 100.0f;
-			Value *= Value;
-			Bitmap NewBitmap = (Bitmap)Image.Clone();
-			BitmapData data = NewBitmap.LockBits(new Rectangle(0, 0, NewBitmap.Width, NewBitmap.Height),
+			value = (100.0f + value) / 100.0f;
+			value *= value;
+			Bitmap newBitmap = (Bitmap)bitmap.Clone();
+			BitmapData data = newBitmap.LockBits(new Rectangle(0, 0, newBitmap.Width, newBitmap.Height),
 												 ImageLockMode.ReadWrite,
-												 NewBitmap.PixelFormat);
-			int Height = NewBitmap.Height;
-			int Width = NewBitmap.Width;
+												 newBitmap.PixelFormat);
+			int height = newBitmap.Height;
+			int width = newBitmap.Width;
 
 			unsafe
 			{
-				for(int y = 0; y < Height; ++y)
+				for(int y = 0; y < height; ++y)
 				{
 					byte* row = (byte*)data.Scan0 + (y * data.Stride);
 					int columnOffset = 0;
-					for(int x = 0; x < Width; ++x)
+					for(int x = 0; x < width; ++x)
 					{
-						byte B = row[columnOffset];
-						byte G = row[columnOffset + 1];
-						byte R = row[columnOffset + 2];
+						byte b = row[columnOffset];
+						byte g = row[columnOffset + 1];
+						byte r = row[columnOffset + 2];
 
-						float Red = R / 255.0f;
-						float Green = G / 255.0f;
-						float Blue = B / 255.0f;
-						Red = (((Red - 0.5f) * Value) + 0.5f) * 255.0f;
-						Green = (((Green - 0.5f) * Value) + 0.5f) * 255.0f;
-						Blue = (((Blue - 0.5f) * Value) + 0.5f) * 255.0f;
+						float red = r / 255.0f;
+						float green = g / 255.0f;
+						float blue = b / 255.0f;
+						red = (((red - 0.5f) * value) + 0.5f) * 255.0f;
+						green = (((green - 0.5f) * value) + 0.5f) * 255.0f;
+						blue = (((blue - 0.5f) * value) + 0.5f) * 255.0f;
 
-						int iR = (int)Red;
+						int iR = (int)red;
 						iR = iR > 255 ? 255 : iR;
 						iR = iR < 0 ? 0 : iR;
-						int iG = (int)Green;
+						int iG = (int)green;
 						iG = iG > 255 ? 255 : iG;
 						iG = iG < 0 ? 0 : iG;
-						int iB = (int)Blue;
+						int iB = (int)blue;
 						iB = iB > 255 ? 255 : iB;
 						iB = iB < 0 ? 0 : iB;
 
@@ -112,9 +112,9 @@ namespace ImageProcessor.Models
 				}
 			}
 
-			NewBitmap.UnlockBits(data);
+			newBitmap.UnlockBits(data);
 
-			return NewBitmap;
+			return newBitmap;
 		}
 	}
 }

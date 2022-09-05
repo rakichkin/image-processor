@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Drawing;
-using System.Windows;
 using System.ComponentModel;
 
 using ImageProcessor.ViewModels;
 using ImageProcessor.Models;
 using ImageProcessor.Services;
-
 
 namespace ImageProcessor.Commands
 {
@@ -45,10 +43,7 @@ namespace ImageProcessor.Commands
 					}
 					catch(Exception ex)
 					{
-						MessageBox.Show("Что-то пошло не так. Ошибка:" + ex.Message,
-										"Ошибка",
-										MessageBoxButton.OK,
-										MessageBoxImage.Error);
+						ErrorMessage.ShowDefaultMessage(ex);
 					}
 				}
 			}
